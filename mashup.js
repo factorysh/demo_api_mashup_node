@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+
 // Entity extraction with Dandelion
 async function dandelion(txt) {
   const resp = await axios
@@ -54,6 +55,8 @@ async function illustrate_that_for_me(txt) {
     gif: gif.data[0].images.downsized_small, 
   };
 }
+
+
 
 illustrate_that_for_me(
   `
