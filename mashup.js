@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+// Entity extraction with Dandelion
 async function dandelion(txt) {
   const resp = await axios
   .get("https://api.dandelion.eu/datatxt/nex/v1", {
@@ -14,6 +15,7 @@ async function dandelion(txt) {
   return resp.data;
 }
 
+// Find an ugly moving picture
 async function giphy(query) {
   const resp = await axios.get("https://api.giphy.com/v1/gifs/search", {
     params: {
@@ -28,6 +30,7 @@ async function giphy(query) {
   return resp.data;
 }
 
+// Extract one entity from a text, with type priorities
 async function the_entity(txt, types) {
   const entities = await dandelion(txt);
   console.log(entities.annotations);
@@ -42,6 +45,7 @@ async function the_entity(txt, types) {
   return annotations[0];
 }
 
+// Get a pict from a text
 async function illustrate_that_for_me(txt) {
   const entity = await the_entity(txt, ["Organisation", "Person", "Place", "Location"]);
   const gif = await giphy(entity.label);
