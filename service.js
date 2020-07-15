@@ -18,7 +18,11 @@ app.get("/pict",
             res.status(400).end();
             return;
         }
-        res.json( await mashup.illustrate_that_for_me(req.query.txt));
+        try {
+            res.json(await mashup.illustrate_that_for_me(req.query.txt));
+        } catch(error) {
+            return next(error);
+        }
 });
 
 app.listen(port, () =>
