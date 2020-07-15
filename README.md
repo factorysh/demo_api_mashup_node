@@ -1,7 +1,12 @@
 Demo of api mashup with node
 ============================
 
-Go get your own API key on Giphy and Dandelion.
+Dummy REST API that mix text analysis and illustrations services.
+
+Go get your own API keys:
+
+ * Look for [Create an App] on Giphy : https://developers.giphy.com/docs/api#quick-start-guide
+ * "Get started with a Free Account" on Dandelion : https://dandelion.eu/accounts/register/?next=/docs/
 
 Export them as Env :
 
