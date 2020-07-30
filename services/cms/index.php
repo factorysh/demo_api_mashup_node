@@ -6,7 +6,7 @@ use Lcobucci\JWT\Signer\Key;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Ramsey\Uuid\Uuid;
 
-$key = new Key($_ENV['SECRET']);
+$key = new Key($_SERVER['SECRET']);
 
 $signer = new Sha256();
 $time = time();
