@@ -13,7 +13,7 @@ $time = time();
 $id = Uuid::uuid4();
 
 $token = (new Builder())->issuedBy('cms') // Configures the issuer (iss claim)
-                        ->permittedFor('http://' . $_SERVER['SERVER_NAME']) // Configures the audience (aud claim)
+                        ->permittedFor('http://' . $_SERVER['HTTP_HOST']) // Configures the audience (aud claim)
                         ->identifiedBy($id, true) // Configures the id (jti claim), replicating as a header item
                         ->issuedAt($time) // Configures the time that the token was issue (iat claim)
                         ->canOnlyBeUsedAfter($time) // Configures the time that the token can be used (nbf claim)
@@ -28,6 +28,7 @@ $token = (new Builder())->issuedBy('cms') // Configures the issuer (iss claim)
 <title>Demo API Mashup</title>
 </head>
 <body>
+<h1>Demo API Mashup</h1>
 
 <?php
 echo $token;
