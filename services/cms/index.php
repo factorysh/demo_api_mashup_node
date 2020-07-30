@@ -11,13 +11,13 @@ $signer = new Sha256();
 $time = time();
 
 $token = (new Builder())->issuedBy('cms') // Configures the issuer (iss claim)
-                        ->permittedFor('http://' . $_SERVER['HTTP_HOST']) // Configures the audience (aud claim)
-                        //->identifiedBy($id, true) // Configures the id (jti claim), replicating as a header item
-                        ->issuedAt($time) // Configures the time that the token was issue (iat claim)
-                        //->canOnlyBeUsedAfter($time) // Configures the time that the token can be used (nbf claim)
-                        ->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
-                        ->withClaim('api', 'mashup') // Configures a new claim
-                        ->getToken($signer, $key); // Retrieves the generated token
+    ->permittedFor('http://' . $_SERVER['HTTP_HOST']) // Configures the audience (aud claim)
+    //->identifiedBy($id, true) // Configures the id (jti claim), replicating as a header item
+    ->issuedAt($time) // Configures the time that the token was issue (iat claim)
+    //->canOnlyBeUsedAfter($time) // Configures the time that the token can be used (nbf claim)
+    ->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
+    ->withClaim('api', 'mashup') // Configures a new claim
+    ->getToken($signer, $key); // Retrieves the generated token
 
 
 $txt = <<<EOT
