@@ -1,0 +1,14 @@
+{
+    "name": "factorysh/cms-demo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Mathieu Lecarme",
+            "email": "mlecarme@bearstech.com"
+        }
+    ],
+    "require": {
+        "lcobucci/jwt": "^3.3",
+        "ramsey/uuid": "^4.1"
+    }
+}
