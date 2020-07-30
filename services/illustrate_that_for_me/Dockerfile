@@ -3,9 +3,12 @@ FROM bearstech/node:12
 ARG UID=1001
 RUN useradd demo --uid ${UID} --shell /bin/bash
 
-COPY *.js /demo/
-COPY node_modules /demo/
+USER demo
+
+COPY service.js mashup.js /demo/
+COPY node_modules/ /demo/node_modules
 
 WORKDIR /demo
-USER demo
+
+ENV HOST=0.0.0.0
 CMD ["node", "service.js"]
