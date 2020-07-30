@@ -16,20 +16,30 @@ $token = (new Builder())->issuedBy('cms') // Configures the issuer (iss claim)
                         ->issuedAt($time) // Configures the time that the token was issue (iat claim)
                         //->canOnlyBeUsedAfter($time) // Configures the time that the token can be used (nbf claim)
                         ->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
-                        ->withClaim('uid', 1) // Configures a new claim, called "uid"
+                        ->withClaim('api', 'mashup') // Configures a new claim
                         ->getToken($signer, $key); // Retrieves the generated token
 
+
+$txt = <<<EOT
+Linus Torvalds : « Vos limitations matérielles ne devraient pas être un problème pour le reste d'entre nous »
+EOT;
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Demo API Mashup</title>
 <script>
-const TOKEN='<?php echo $token; ?>';
+const TOKEN = '<?php echo $token; ?>';
+const txt = <?php echo json_encode($txt); ?>;
 
-fetch('/pict?txt=sponge', {
+fetch('/pict', {
+    method: 'POST',
+    body: JSON.stringify({
+        txt: txt,
+    }),
     headers: new Headers({
         authorization: `Bearer ${TOKEN}`,
+        'Content-Type': 'application/json',
     })
 }).then(response => response.json())
   .then(data => console.log(data));
