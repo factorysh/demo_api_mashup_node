@@ -26,30 +26,46 @@ EOT;
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Demo API Mashup</title>
-<script>
-const TOKEN = '<?php echo $token; ?>';
-const txt = <?php echo json_encode($txt); ?>;
-
-fetch('/pict', {
-    method: 'POST',
-    body: JSON.stringify({
-        txt: txt,
-    }),
-    headers: new Headers({
-        authorization: `Bearer ${TOKEN}`,
-        'Content-Type': 'application/json',
-    })
-}).then(response => response.json())
-  .then(data => console.log(data));
-</script>
+    <title>Demo API Mashup</title>
 </head>
+
 <body>
-<h1>Demo API Mashup</h1>
+    <h1>Demo API Mashup</h1>
 
-<div id="illustration">
-</div>
+    <p id="blah">
+        <?php echo $txt; ?>
+    </p>
+    <div id="dropzone">
+    </div>
 
+    <script>
+        const TOKEN = '<?php echo $token; ?>';
+        const txt = document.getElementById('blah').innerText;
+
+        fetch('/pict', {
+                method: 'POST',
+                body: JSON.stringify({
+                    txt: txt,
+                }),
+                headers: new Headers({
+                    authorization: `Bearer ${TOKEN}`,
+                    'Content-Type': 'application/json',
+                })
+            }).then(response => response.json())
+            .then(data => {
+                console.log(data);
+                const dropzone = document.getElementById('dropzone');
+                const v = document.createElement("video");
+                v.setAttribute('src', data.gif.mp4);
+                v.setAttribute('width', data.gif.width);
+                v.setAttribute('height', data.gif.height);
+                v.setAttribute('autoplay', true);
+                dropzone.append(v);
+
+            });
+    </script>
 </body>
+
 </html>
