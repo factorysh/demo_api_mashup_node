@@ -10,8 +10,18 @@ app.get("/pict",
     jwt({
         secret: process.env.SECRET,
         algorithms: ['HS256'],
+        issuer: 'cms',
+        credentialsRequired: true,
         getToken: (req) => {
-            return req.query.token;
+            console.log("secret", process.env.SECRET);
+            if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+                console.log("authorization", req.headers.authorization);
+                return req.headers.authorization.split(' ')[1];
+            } else if (req.query && req.query.token) {
+            console.log("token", req.query.token);
+              return req.query.token;
+            }
+            return null;
         },
     }),
     async (req, res, next) => {
