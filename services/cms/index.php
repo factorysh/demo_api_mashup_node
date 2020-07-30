@@ -26,13 +26,13 @@ $token = (new Builder())->issuedBy('cms') // Configures the issuer (iss claim)
 <html>
 <head>
 <title>Demo API Mashup</title>
+<script>
+const TOKEN='<?php echo $token; ?>';
+</script>
 </head>
 <body>
 <h1>Demo API Mashup</h1>
 
-<?php
-echo $token;
-?>
 
 </body>
 </html>
