@@ -1,7 +1,7 @@
 image: vendor
 	docker build \
 		--build-arg UID=`id -u`\
-		-t demo-cms \
+		-t demo_api_mashup_node/cms \
 		.
 
 vendor:
