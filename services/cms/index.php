@@ -40,6 +40,8 @@ fetch('/pict?txt=sponge', {
 <body>
 <h1>Demo API Mashup</h1>
 
+<div id="illustration">
+</div>
 
 </body>
 </html>
