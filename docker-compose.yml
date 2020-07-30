@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  ingress:
+    image: demo_api_mashup_node/ingress
+    ports:
+     - 8000:8000
+    depends_on:
+      - cms
+      - illustrate_that_for_me
+
+  cms:  
+    image: demo_api_mashup_node/cms
+    environment:
+      SECRET: ${SECRET}
+
+  illustrate_that_for_me:
+    image: demo_api_mashup_node/illustrate_that_for_me
+    environment:
+      SECRET: ${SECRET}
