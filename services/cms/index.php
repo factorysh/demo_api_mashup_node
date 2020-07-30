@@ -28,6 +28,13 @@ $token = (new Builder())->issuedBy('cms') // Configures the issuer (iss claim)
 <title>Demo API Mashup</title>
 <script>
 const TOKEN='<?php echo $token; ?>';
+
+fetch('/pict?txt=sponge', {
+    headers: new Headers({
+        authorization: `Bearer ${TOKEN}`,
+    })
+}).then(response => response.json())
+  .then(data => console.log(data));
 </script>
 </head>
 <body>
