@@ -8,7 +8,6 @@
         }
     ],
     "require": {
-        "lcobucci/jwt": "^3.3",
-        "ramsey/uuid": "^4.1"
+        "lcobucci/jwt": "^3.3"
     }
 }
