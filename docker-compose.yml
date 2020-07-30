@@ -18,3 +18,5 @@ services:
     image: demo_api_mashup_node/illustrate_that_for_me
     environment:
       SECRET: ${SECRET}
+      DANDELION_TOKEN: ${DANDELION_TOKEN}
+      GIPHY_TOKEN: ${GIPHY_TOKEN}
