@@ -42,29 +42,32 @@ EOT;
 
     <script>
         const TOKEN = '<?php echo $token; ?>';
-        const txt = document.getElementById('blah').innerText;
 
-        fetch('/pict', {
-                method: 'POST',
-                body: JSON.stringify({
-                    txt: txt,
-                }),
-                headers: new Headers({
-                    authorization: `Bearer ${TOKEN}`,
-                    'Content-Type': 'application/json',
+        window.onload = (event) => {
+            const txt = document.getElementById('blah').innerText;
+
+            fetch('/pict', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        txt: txt,
+                    }),
+                    headers: new Headers({
+                        authorization: `Bearer ${TOKEN}`,
+                        'Content-Type': 'application/json',
+                    })
                 })
-            }).then(response => response.json())
-            .then(data => {
-                console.log(data);
-                const dropzone = document.getElementById('dropzone');
-                const v = document.createElement("video");
-                v.setAttribute('src', data.gif.mp4);
-                v.setAttribute('width', data.gif.width);
-                v.setAttribute('height', data.gif.height);
-                v.setAttribute('autoplay', true);
-                dropzone.append(v);
-
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const dropzone = document.getElementById('dropzone');
+                    const v = document.createElement("video");
+                    v.setAttribute('src', data.gif.mp4);
+                    v.setAttribute('width', data.gif.width);
+                    v.setAttribute('height', data.gif.height);
+                    v.setAttribute('autoplay', true);
+                    dropzone.append(v);
+                });
+        }
     </script>
 </body>
 
