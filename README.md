@@ -1,6 +1,9 @@
 Demo of api mashup with node
 ============================
 
+The mashup part
+---------------
+
 Dummy REST API that mix text analysis and illustrations services.
 
 Go get your own API keys:
@@ -16,4 +19,18 @@ Export them as Env :
 
 And launch tests:
 
+    cd services/illustrate_that_for_me
     yarn test
+
+The big picture
+---------------
+
+               +---------+   +------------------------+
+    browser -->| Ingress |   | illustrate_that_for_me +--> Giphy REST
+               | (Nginx) +-->| (Nodejs)               +--> Dandelion REST
+               |         |   +------------------------+
+               |         |
+               |         |   +-------+
+               |         +-->| cms   |
+               |         |   | (PHP) |
+               +---------+   +-------+
