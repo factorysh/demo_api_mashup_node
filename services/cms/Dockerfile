@@ -1,4 +1,4 @@
-FROM bearstech/php:7.3
+FROM bearstech/php:7.4
 
 ARG UID=1001
 RUN useradd demo --uid ${UID} --shell /bin/bash
