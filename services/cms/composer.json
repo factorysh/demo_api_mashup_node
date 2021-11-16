@@ -8,6 +8,6 @@
         }
     ],
     "require": {
-        "lcobucci/jwt": "^3.3"
+        "lcobucci/jwt": "^4.1.5"
     }
 }
