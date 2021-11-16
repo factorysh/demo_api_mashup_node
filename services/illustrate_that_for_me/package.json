@@ -3,11 +3,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.24.0",
     "express": "^4.17.1",
-    "express-jwt": "^6.0.0"
+    "express-jwt": "^6.1.0"
   },
   "devDependencies": {
-    "jest": "^26.1.0"
+    "jest": "^27.3.1"
   }
 }
