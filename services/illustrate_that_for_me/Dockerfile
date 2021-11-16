@@ -1,4 +1,4 @@
-FROM bearstech/node:12
+FROM bearstech/node:16
 
 ARG UID=1001
 RUN useradd demo --uid ${UID} --shell /bin/bash
